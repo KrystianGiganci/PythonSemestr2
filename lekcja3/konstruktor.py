@@ -24,3 +24,5 @@ auto1 = Samochod("Ford", 'Focus', 'Benzyna', 180)  # konstruktor wywołuje się 
 
 auto2 = Samochod('Mazda', '6', 'Benzyna', 240)
 print(auto1.licznik1, auto2.licznik1)
+auto1.liczba_kół
+auto2.liczba_kół

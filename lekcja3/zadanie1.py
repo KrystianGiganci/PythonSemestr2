@@ -8,6 +8,7 @@ Następnie stwórz metodę, która wyświetli pole oraz obwód tej figury.
 
 class Kolo():
     PI = 3.14
+    pole = 39
     def __init__(self) -> None:
         pass
 
