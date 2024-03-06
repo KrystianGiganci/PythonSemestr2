@@ -9,9 +9,10 @@ class Zwierze():  # klasa bazowa
     def jedz(self):
         print(f'{self.imie} je')
 
+
 # Klasa bazowa - Zwierze
 # Klasa pochodna - Pies
-class Pies(Zwierze): # klasa pochodna Pies, ktora dziedziczy po klasie Zwierze
+class Pies(Zwierze):  # klasa pochodna Pies, która dziedziczy po klasie Zwierze
     def __init__(self, wiek, imie, kolor_siersci):
         super().__init__(wiek, imie)
         self.kolor_siersci = kolor_siersci
@@ -20,7 +21,7 @@ class Pies(Zwierze): # klasa pochodna Pies, ktora dziedziczy po klasie Zwierze
         print(f'{self.imie} ma siersc, ktorej kolor to: {self.kolor_siersci}')
 
 
-class Kot(Zwierze):
+class Kot(Zwierze):  # klasa pochodna Kot, która dziedziczy po klasie bazowej Zwierze
     def __init__(self, wiek, imie, ulubione_miejsce_do_spania):
         super().__init__(wiek, imie)
         self.ulubione_miejsce_do_spania = ulubione_miejsce_do_spania
@@ -34,3 +35,24 @@ print(type(zwierze1))
 zwierze1.wydaj_dzwiek()
 zwierze1.jedz()
 zwierze1.poloz_sie_spac()
+
+
+'''
+ZADANIE 1.
+Napisz klasę Ptak, która posiada metodę lec().
+Klasa ta ma dziedziczyć po klasie Zwierze.
+'''
+class Ptak(Zwierze):
+    def __init__(self, wiek, imie):
+        super().__init__(wiek, imie)
+
+    def lec(self):
+        print(f"{self.imie} leci")
+
+"""
+ZADANIE 2.
+Napisz klasę Orzeł, która dziedziczy po klasie Ptak.
+Orzeł ma mieć metodę poluj().
+Metoda ta powinna wywoływać metodę lec()
+z klasy nadrzędnej (Ptak).
+"""
