@@ -9,7 +9,8 @@ class Zwierze():  # klasa bazowa
     def jedz(self):
         print(f'{self.imie} je')
 
-
+# Klasa bazowa - Zwierze
+# Klasa pochodna - Pies
 class Pies(Zwierze): # klasa pochodna Pies, ktora dziedziczy po klasie Zwierze
     def __init__(self, wiek, imie, kolor_siersci):
         super().__init__(wiek, imie)
@@ -19,8 +20,17 @@ class Pies(Zwierze): # klasa pochodna Pies, ktora dziedziczy po klasie Zwierze
         print(f'{self.imie} ma siersc, ktorej kolor to: {self.kolor_siersci}')
 
 
-zwierze1 = Pies(8, 'Azor', 'czarny')
+class Kot(Zwierze):
+    def __init__(self, wiek, imie, ulubione_miejsce_do_spania):
+        super().__init__(wiek, imie)
+        self.ulubione_miejsce_do_spania = ulubione_miejsce_do_spania
+
+    def poloz_sie_spac(self):
+        print(f'{self.imie} kładzie się spać w tym miejscu: {self.ulubione_miejsce_do_spania}')
+
+
+zwierze1 = Kot(8, 'Azor', 'wanna')
 print(type(zwierze1))
 zwierze1.wydaj_dzwiek()
 zwierze1.jedz()
-zwierze1.wypisz_kolor()
+zwierze1.poloz_sie_spac()
