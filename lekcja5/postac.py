@@ -55,7 +55,7 @@ class Gracz(Postac):
         walka = True
         while walka:
             print(f'Życie gracza: {self.zycie}')
-            print(f'Życie {przeciwnik.name}: {przeciwnik.zycie}')
+            print(f'Życie {przeciwnik.nazwa}: {przeciwnik.zycie}')
             akcja = input('Jaką akcję chcesz wykonać? (atak, uciekaj): ')
             if akcja == 'atak':
                 self.atakuj(przeciwnik)
@@ -64,9 +64,16 @@ class Gracz(Postac):
                     return True
                 przeciwnik.atakuj(self)
             elif akcja == 'uciekaj':
-                pass
+                print(f'{self.nazwa} ucieka.')
+                przeciwnik.atakuj(self)
+                walka = False
             else:
                 print('Podano nieprawidłową akcję.')
+
+            if self.zycie <= 0:
+                print(f'{self.nazwa} ginie.')
+                return False
+        return True
 
 
 """
@@ -79,3 +86,21 @@ może nam dać dwa wyniki:
  1. Gracz znajdzie pustą jaskinię - wracamy do dalszych poszukiwań,
  2. Gracz natrafi na przeciwnika, z którym zaczyna walczyć.
 """
+
+gracz = Gracz()
+gra = True
+
+while gra:
+    akcja = input('Jaką akcję chcesz wykonać? (zwiedzaj, odpocznij)')
+
+    if akcja == 'zwiedzaj':
+        if randint(0, 1) == 0:
+            print(f'{gracz.nazwa} znalazł pustą jaskinię.')
+        else:
+            przeciwnik = Przeciwnik(gracz)
+            print(f'{gracz.nazwa} natrafił na: {przeciwnik.nazwa}')
+            gra = gracz.walka(przeciwnik)
+    elif akcja == 'odpocznij':
+        gracz.odpoczynek()
+    else:
+        print('Podano nieprawidłową akcję.')
