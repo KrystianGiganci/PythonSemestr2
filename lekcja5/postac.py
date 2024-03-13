@@ -59,6 +59,9 @@ class Gracz(Postac):
             akcja = input('Jaką akcję chcesz wykonać? (atak, uciekaj): ')
             if akcja == 'atak':
                 self.atakuj(przeciwnik)
+                if przeciwnik.zycie <= 0:
+                    print(f'{self.nazwa} zabija {przeciwnik.nazwa}')
+                    return True
                 przeciwnik.atakuj(self)
             elif akcja == 'uciekaj':
                 pass
