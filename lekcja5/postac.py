@@ -1,10 +1,4 @@
-"""
-Klasa postać, posłuży nam na lekcji 5 -- podczas powtórki, na której stworzymy grę
-Każda postać powinna mieć swoje imię, aktualny stan życia oraz maksymalny stan życia.
-Pierwszą metodą, którą stworzymy dla tej klasy będzie metoda 'atakuj', dzięki której
-postacie będą mogły ze sobą walczyć.
-"""
-from random import randint
+from random import randint, choice
 
 
 class Postac():
@@ -30,6 +24,10 @@ class Przeciwnik(Postac):
     oraz losować jego życie - z zakresu od 1 do
     aktualnego zdrowia gracza
     """
+    def __init__(self, gracz) -> None:
+        super().__init__()
+        self.nazwa = choice(['goblin', 'zombie', 'szkielet'])
+        self.zycie = randint(1, gracz.zycie)
     pass
 
 
@@ -43,7 +41,29 @@ class Gracz(Postac):
     - odpoczynek: przywraca graczowi jeden punkt życia,
     - walka: pozwala graczowi podjąć walkę z przeciwnikiem lub przed nim uciekać.
     '''
-    pass
+    def __init__(self) -> None: # konstruktor
+        super().__init__()
+        self.zycie = 10
+        self.max_zycie = 10
+        self.nazwa = input('Podaj imię gracza: ')
+
+    def odpoczynek(self):
+        self.zycie = min(self.max_zycie, self.zycie+1)
+        print(f'{self.nazwa} odpoczywa, aktulny stan zdrowia: {self.zycie}/{self.max_zycie}')
+
+    def walka(self, przeciwnik):
+        walka = True
+        while walka:
+            print(f'Życie gracza: {self.zycie}')
+            print(f'Życie {przeciwnik.name}: {przeciwnik.zycie}')
+            akcja = input('Jaką akcję chcesz wykonać? (atak, uciekaj): ')
+            if akcja == 'atak':
+                self.atakuj(przeciwnik)
+                przeciwnik.atakuj(self)
+            elif akcja == 'uciekaj':
+                pass
+            else:
+                print('Podano nieprawidłową akcję.')
 
 
 """
