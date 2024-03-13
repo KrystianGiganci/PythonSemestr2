@@ -1,8 +1,10 @@
 class Uzytkownik():
+    # zmienne:
     imie = ""
     nazwisko = ""
     wiek = 0
 
+    # metody:
     def wyswietl_info(self):
         print(f"{self.imie} ma {self.wiek} lat.")
 

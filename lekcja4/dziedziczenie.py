@@ -42,12 +42,15 @@ ZADANIE 1.
 Napisz klasę Ptak, która posiada metodę lec().
 Klasa ta ma dziedziczyć po klasie Zwierze.
 '''
+
+
 class Ptak(Zwierze):
     def __init__(self, wiek, imie):
         super().__init__(wiek, imie)
 
     def lec(self):
         print(f"{self.imie} leci")
+
 
 """
 ZADANIE 2.
@@ -56,3 +59,12 @@ Orzeł ma mieć metodę poluj().
 Metoda ta powinna wywoływać metodę lec()
 z klasy nadrzędnej (Ptak).
 """
+
+
+class Orzel(Ptak):
+    def __init__(self, wiek, imie):
+        super().__init__(wiek, imie)
+
+    def poluj(self):
+        self.lec()
+        print(f"{self.imie} poluje")

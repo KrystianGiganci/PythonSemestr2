@@ -10,8 +10,21 @@ Slowa: 7 Litery: 44 ilość liter: {'a': 5, 'b': 2, 'c': 1, 'p': 3, 'r': 4,
 
 
 def count_letters(text):
-    # TODO
-    pass
+    words = 1
+    letters = 0
+    dictionary = {}
+    for letter in text:
+        letter = letter.lower()
+        if letter == ' ':
+            words += 1
+        else:
+            letter += 1
+            if letter in dictionary:
+                dictionary[letter] += 1
+            else:
+                dictionary[letter] = 1
+
+    print(f'Liczba słów: {words}, liczba liter: {letters}')
 
 
 text = "ABC przykładowy tekst na potrzeby naszego programu"

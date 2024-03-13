@@ -27,3 +27,4 @@ class Prostokat():
 
 kolo1 = Kolo(15)
 kolo1.wyswietl_pole()
+kolo1.wyswietl_obwod()
