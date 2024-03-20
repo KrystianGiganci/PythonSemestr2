@@ -3,6 +3,7 @@ import pygame
 SZEROKOSC_EKRANU = 800
 WYSOKOSC_EKRANU = 600
 obraz_tla = pygame.image.load('images/background.png')
+obraz_bazy_postaci = pygame.image.load('images/base.png')
 
 pygame.init()
 ekran = pygame.display.set_mode([SZEROKOSC_EKRANU, WYSOKOSC_EKRANU])
@@ -24,6 +25,9 @@ while gra_dziala:
 
     # rysowanie tła
     ekran.blit(obraz_tla, (0, 0))
+
+    # rysowanie bazy postaci
+    ekran.blit(obraz_bazy_postaci, (270, 130))
 
     # wyczyszczenie ekranu
     pygame.display.flip()
