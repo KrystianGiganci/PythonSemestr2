@@ -33,3 +33,18 @@ class Element():
 class NakrycieGlowy(Element):
     def __init__(self) -> None:
         super().__init__('head')
+
+
+class UbranieElement(Element):
+    def __init__(self) -> None:
+        super().__init__('body')
+
+
+class OczyElement(Element):
+    def __init__(self) -> None:
+        super().__init__('eye')
+
+
+class BronElement(Element):
+    def __init__(self) -> None:
+        super().__init__('weapon')

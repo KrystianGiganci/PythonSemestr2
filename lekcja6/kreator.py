@@ -1,4 +1,7 @@
+# zaimportowanie modułu pygame
 import pygame
+# zaimportowanie stworzonego przez nas pliku
+import Element
 
 SZEROKOSC_EKRANU = 800
 WYSOKOSC_EKRANU = 600
@@ -9,7 +12,10 @@ pygame.init()
 ekran = pygame.display.set_mode([SZEROKOSC_EKRANU, WYSOKOSC_EKRANU])
 zegar = pygame.time.Clock()
 
-
+nakrycie_glowy = Element.NakrycieGlowy()
+ubranie = Element.UbranieElement()
+oczy = Element.OczyElement()
+bron = Element.BronElement()
 gra_dziala = True
 
 while gra_dziala:
@@ -28,6 +34,12 @@ while gra_dziala:
 
     # rysowanie bazy postaci
     ekran.blit(obraz_bazy_postaci, (270, 130))
+
+    # rysowanie elementów postaci
+    ekran.blit(ubranie.wybranyObraz(), (270, 130))
+    ekran.blit(oczy.wybranyObraz(), (270, 130))
+    ekran.blit(nakrycie_glowy.wybranyObraz(), (270, 130))
+    ekran.blit(bron.wybranyObraz(), (270, 130))
 
     # wyczyszczenie ekranu
     pygame.display.flip()
