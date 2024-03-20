@@ -20,3 +20,16 @@ class Element():
             sciezka = f'images/{typ}{i}.png'
             wczytany_obraz = Obraz(sciezka)
             self.lista_obrazow.append(wczytany_obraz)
+
+    def wybierzNastepny(self):
+        self.wybrany += 1
+        if self.wybrany > 2:
+            self.wybrany = 0
+
+    def wybranyObraz(self):
+        return self.lista_obrazow[self.wybrany].obraz
+
+
+class NakrycieGlowy(Element):
+    def __init__(self) -> None:
+        super().__init__('head')
