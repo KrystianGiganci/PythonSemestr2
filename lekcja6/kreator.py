@@ -12,6 +12,15 @@ pygame.init()
 ekran = pygame.display.set_mode([SZEROKOSC_EKRANU, WYSOKOSC_EKRANU])
 zegar = pygame.time.Clock()
 
+pygame.font.init()
+moja_czcionka = pygame.font.SysFont('Comic Sans MS', 30)
+
+
+def wypisz_tekst(tekst, pozycja):
+    napis = moja_czcionka.render(tekst, False, (255, 255, 255))
+    ekran.blit(napis, pozycja)
+
+
 nakrycie_glowy = Element.NakrycieGlowy()
 ubranie = Element.UbranieElement()
 oczy = Element.OczyElement()
@@ -48,6 +57,12 @@ while gra_dziala:
     ekran.blit(oczy.wybranyObraz(), (270, 130))
     ekran.blit(nakrycie_glowy.wybranyObraz(), (270, 130))
     ekran.blit(bron.wybranyObraz(), (270, 130))
+
+    # wypisywanie informacji o zmianach wyświetlanego elementu
+    wypisz_tekst('[Q] - zmiana nakrycia głowy', (70, 100))
+    wypisz_tekst('[W] - zmiana ubrania', (70, 130))
+    wypisz_tekst('[E] - zmiana oczu', (70, 160))
+    wypisz_tekst('[R] - zmiana broni', (70, 190))
 
     # wyczyszczenie ekranu
     pygame.display.flip()
