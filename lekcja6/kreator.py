@@ -25,6 +25,14 @@ while gra_dziala:
             # naciśnięcie klawisza ESC zamyka okno
             if zdarzenie.key == pygame.K_ESCAPE:
                 gra_dziala = False
+            if zdarzenie.key == pygame.K_q:
+                nakrycie_glowy.wybierzNastepny()
+            if zdarzenie.key == pygame.K_w:
+                ubranie.wybierzNastepny()
+            if zdarzenie.key == pygame.K_e:
+                oczy.wybierzNastepny()
+            if zdarzenie.key == pygame.K_r:
+                bron.wybierzNastepny()
         # naciśnięcie przycisku X w górnym rogu zamyka okno
         elif zdarzenie.type == pygame.QUIT:
             gra_dziala = False
