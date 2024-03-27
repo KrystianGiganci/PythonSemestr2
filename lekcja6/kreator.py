@@ -26,6 +26,7 @@ ubranie = Element.UbranieElement()
 oczy = Element.OczyElement()
 bron = Element.BronElement()
 gra_dziala = True
+zapisywanie = False
 
 while gra_dziala:
     # obsługa zdarzeń
@@ -42,6 +43,8 @@ while gra_dziala:
                 oczy.wybierzNastepny()
             if zdarzenie.key == pygame.K_r:
                 bron.wybierzNastepny()
+            if zdarzenie.key == pygame.K_s:
+                zapisywanie = True
         # naciśnięcie przycisku X w górnym rogu zamyka okno
         elif zdarzenie.type == pygame.QUIT:
             gra_dziala = False
@@ -58,11 +61,17 @@ while gra_dziala:
     ekran.blit(nakrycie_glowy.wybranyObraz(), (270, 130))
     ekran.blit(bron.wybranyObraz(), (270, 130))
 
+    # zapisywanie
+    if zapisywanie:   # if zapisywanie == if zapisywanie is True
+        pygame.image.save(ekran, 'moja_postac.png')
+
     # wypisywanie informacji o zmianach wyświetlanego elementu
     wypisz_tekst('[Q] - zmiana nakrycia głowy', (70, 100))
     wypisz_tekst('[W] - zmiana ubrania', (70, 130))
     wypisz_tekst('[E] - zmiana oczu', (70, 160))
     wypisz_tekst('[R] - zmiana broni', (70, 190))
+    wypisz_tekst('[S] - Zapisz', (70, 220))
+
 
     # wyczyszczenie ekranu
     pygame.display.flip()
