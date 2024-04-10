@@ -41,6 +41,16 @@ while gra_dziala:
             # naciśnięcie klawisza ESC zamyka okno
             if zdarzenie.key == pygame.K_ESCAPE:
                 gra_dziala = False
+            if zdarzenie.key == pygame.K_w or zdarzenie.key == pygame.K_UP:
+                waz.zmien_kierunek(Kierunek.GORA)
+            if zdarzenie.key == pygame.K_a:
+                waz.zmien_kierunek(Kierunek.LEWO)
+            if zdarzenie.key == pygame.K_s:
+                waz.zmien_kierunek(Kierunek.DOL)
+            if zdarzenie.key == pygame.K_d:
+                waz.zmien_kierunek(Kierunek.PRAWO)
+        elif zdarzenie.type == PORUSZ_WEZEM:
+            waz.aktualizuj()
         # naciśnięcie przycisku X w górnym rogu zamyka okno
         elif zdarzenie.type == pygame.QUIT:
             gra_dziala = False
