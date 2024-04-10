@@ -39,6 +39,7 @@ class Waz(pygame.sprite.Sprite):
             self.nowy_kierunek = nowy_kierunek
 
     def aktualizuj(self):
+        # poruszanie głową węża
         self.kierunek = self.nowy_kierunek
         self.obraz = pygame.transform.rotate(self.oryginalny_obraz, (self.kierunek.value*-90))
 
@@ -52,9 +53,22 @@ class Waz(pygame.sprite.Sprite):
         if self.kierunek == Kierunek.LEWO:
             self.rect.move_ip(-32, 0)
 
+        # poruszanie segmentami
         for i in range(len(self.segmenty)):
             if i == 0:
                 self.segmenty[i].przesun(self.ostatnia_pozycja)
             else:
                 self.segmenty[i].przesun(self.segmenty[i-1].ostatnia_pozycja)
             pass
+
+        # dodawanie nowego segmentu
+        if self.dodaj_segment:
+            nowy_segment = Segment()
+
+            if len(self.segmenty) > 0:
+                nowa_pozycja = copy.deepcopy(self.segmenty[-1].pozycja)
+            else:
+                nowa_pozycja = copy.deepcopy(self.ostatnia_pozycja)
+            nowy_segment.pozycja = nowa_pozycja
+            self.segmenty.append(nowy_segment)
+            self.dodaj_segment = False
