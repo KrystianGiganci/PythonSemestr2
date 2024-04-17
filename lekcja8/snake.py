@@ -77,6 +77,10 @@ while gra_dziala:
     for segment in waz.segmenty:
         ekran.blit(segment.obraz, segment.pozycja)
 
+    # sprawdzamy kolizje
+    if waz.sprawdz_kolizje():
+        gra_dziala = False
+
     pygame.display.flip()
     zegar.tick(30)
 
