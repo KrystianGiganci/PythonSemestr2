@@ -63,6 +63,7 @@ class Waz(pygame.sprite.Sprite):
 
         # dodawanie nowego segmentu
         if self.dodaj_segment:
+            print('Tworze segment')
             nowy_segment = Segment()
 
             if len(self.segmenty) > 0:
@@ -75,3 +76,18 @@ class Waz(pygame.sprite.Sprite):
 
     def jedz_jablko(self):
         self.dodaj_segment = True
+
+    def sprawdz_kolizje(self):
+        # wyjście poza ekran
+        if self.rect.top < 0 or self.rect.top >= 608:
+            return True
+        if self.rect.left < 0 or self.rect.left >= 800:
+            return True
+
+        # ugryzienie ogona
+        for segment in self.segmenty:
+            if self.rect.topleft == segment.pozycja.topleft:
+                return True
+
+        # jezeli nie sprawdzily sie powyzsze warunki
+        return False
