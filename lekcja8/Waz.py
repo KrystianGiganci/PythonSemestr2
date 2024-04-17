@@ -72,3 +72,6 @@ class Waz(pygame.sprite.Sprite):
             nowy_segment.pozycja = nowa_pozycja
             self.segmenty.append(nowy_segment)
             self.dodaj_segment = False
+
+    def jedz_jablko(self):
+        self.dodaj_segment = True

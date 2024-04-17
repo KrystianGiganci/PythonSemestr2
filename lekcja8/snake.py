@@ -55,6 +55,14 @@ while gra_dziala:
         elif zdarzenie.type == pygame.QUIT:
             gra_dziala = False
 
+    # sprawdzenie czy głowa węża jest na jabłku
+    kolizja_z_jablkiem = pygame.sprite.spritecollideany(waz, jablka)
+    if kolizja_z_jablkiem is not None:
+        kolizja_z_jablkiem.kill()
+        waz.jedz_jablko()
+        jablko = Jablko()
+        jablka.add(jablko)
+
     # rysowanie tła
     ekran.blit(tlo, (0, 0))
 
@@ -64,6 +72,10 @@ while gra_dziala:
 
     # rysowanie głowy węża
     ekran.blit(waz.obraz, waz.rect)
+
+    # rysowanie segmentów
+    for segment in waz.segmenty:
+        ekran.blit(segment.obraz, segment.pozycja)
 
     pygame.display.flip()
     zegar.tick(30)
