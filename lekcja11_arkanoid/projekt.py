@@ -1,4 +1,5 @@
 import pygame
+from Platforma import Platforma
 
 SZEROKOSC_EKRANU = 1024
 WYSOKOSC_EKRANU = 800
@@ -7,6 +8,8 @@ pygame.init()
 ekran = pygame.display.set_mode([SZEROKOSC_EKRANU, WYSOKOSC_EKRANU])
 zegar = pygame.time.Clock()
 obraz_tla = pygame.image.load('lekcja11_arkanoid/images/background.png')
+
+platforma = Platforma()
 
 gra_dziala = True
 while gra_dziala:
@@ -21,6 +24,11 @@ while gra_dziala:
 
     # rysowanie tła
     ekran.blit(obraz_tla, (0, 0))
+
+    # rysowanie platformy
+    ekran.blit(platforma.obraz, platforma.pozycja)
+
+
     pygame.display.flip()
     zegar.tick(30)
 
