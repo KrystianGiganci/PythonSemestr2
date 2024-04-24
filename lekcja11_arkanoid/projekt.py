@@ -21,13 +21,17 @@ while gra_dziala:
             gra_dziala = False
 
     # sterowanie platformą
+    keys = pygame.key.get_pressed()
+    if keys[pygame.K_LEFT]:
+        platforma.ruszaj_platforma(-1)
+    if keys[pygame.K_RIGHT]:
+        platforma.ruszaj_platforma(1)
 
     # rysowanie tła
     ekran.blit(obraz_tla, (0, 0))
 
     # rysowanie platformy
     ekran.blit(platforma.obraz, platforma.pozycja)
-
 
     pygame.display.flip()
     zegar.tick(30)

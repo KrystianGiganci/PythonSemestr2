@@ -14,7 +14,7 @@ class Platforma(pygame.sprite.Sprite):
         self.pozycja = pygame.Rect(SZEROKOSC_EKRANU/2 - 70, WYSOKOSC_EKRANU-100, 140, 30)
 
     def ruszaj_platforma(self, wartosc):
-        predkosc = 10
+        predkosc = 13
         self.pozycja.move_ip(wartosc*predkosc, 0)
         if self.pozycja.left <= 0:
             self.pozycja.x = 0
