@@ -1,5 +1,6 @@
 import pygame
 from Platforma import Platforma
+from Kulka import Kulka
 
 SZEROKOSC_EKRANU = 1024
 WYSOKOSC_EKRANU = 800
@@ -10,6 +11,7 @@ zegar = pygame.time.Clock()
 obraz_tla = pygame.image.load('lekcja11_arkanoid/images/background.png')
 
 platforma = Platforma()
+kulka = Kulka()
 
 gra_dziala = True
 while gra_dziala:
@@ -27,11 +29,15 @@ while gra_dziala:
     if keys[pygame.K_RIGHT]:
         platforma.ruszaj_platforma(1)
 
+    kulka.aktualizuj(platforma)
+    platforma.aktualizuj()
+
     # rysowanie tła
     ekran.blit(obraz_tla, (0, 0))
 
-    # rysowanie platformy
+    # rysowanie platformy i kulki
     ekran.blit(platforma.obraz, platforma.pozycja)
+    ekran.blit(kulka.obraz, kulka.pozycja)
 
     pygame.display.flip()
     zegar.tick(30)
