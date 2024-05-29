@@ -10,6 +10,7 @@ class Klocek(pygame.sprite.Sprite):
         self.zdrowie = zdrowie
 
     def aktualizuj(self):
+        maska_koloru = (10, 10, 10)
         if self.zdrowie >= 3 and self.zdrowie <= 6:
             maska_koloru = (50, 50, 0)
         if self.zdrowie == 3:

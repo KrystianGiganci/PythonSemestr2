@@ -60,6 +60,7 @@ def dodaj_klocki():
 
     for i in range(10):
         for j in range(7):
+            print(wczytany_poziom)
             if wczytany_poziom[j][i] != 0:
                 x = i*96 + 32
                 y = j*48 + 32
