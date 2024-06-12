@@ -10,14 +10,13 @@ pygame.display.set_caption("Tamagotchi")
 
 zegar = pygame.time.Clock()
 
-""" ! ruszamy dopiero pod koniec zajęć !
-wesoly = pygame.image.load('happy.jpg')
+wesoly = pygame.image.load('lekcja17_tamagotchi/happy.jpg')
 wesoly = pygame.transform.scale(wesoly, (150, 150))
-neutralny = pygame.image.load('neutral.jpg')
+neutralny = pygame.image.load('lekcja17_tamagotchi/neutral.jpg')
 neutralny = pygame.transform.scale(neutralny, (150, 150))
-smutny = pygame.image.load('sad.jpg')
+smutny = pygame.image.load('lekcja17_tamagotchi/sad.jpg')
 smutny = pygame.transform.scale(smutny, (150, 150))
-"""
+
 # Kolory
 kolor_tla = (130, 225, 155)
 KOLOR_CZARNY = (0, 0, 0)
@@ -49,6 +48,11 @@ while gra_dziala:
                 gra_dziala = False
         elif zdarzenie.type == pygame.QUIT:
             gra_dziala = False
+        elif zdarzenie.type == pygame.MOUSEBUTTONDOWN:
+            if przycisk_nakarm.collidepoint(zdarzenie.pos):
+                tamagotchi.nakarm()
+            if przycisk_pobaw.collidepoint(zdarzenie.pos):
+                tamagotchi.pobaw_sie()
     tamagotchi.aktualizuj()
 
     ekran.fill(kolor_tla)
@@ -82,9 +86,6 @@ while gra_dziala:
     ekran.blit(tekst_nakarm, (przycisk_nakarm.x + (przycisk_nakarm.width - szer_tekst_nakarm)//2, 310))
     ekran.blit(tekst_pobaw, (przycisk_pobaw.x + (przycisk_pobaw.width - szer_tekst_pobaw)//2, 310))
 
-
-
-    """ ! ruszamy dopiero pod koniec zajęć !
     nastroj = tamagotchi.poziom_glodu + tamagotchi.poziom_szczescia
     if nastroj > 120:
         ekran.blit(wesoly, (125, 135))
@@ -92,7 +93,7 @@ while gra_dziala:
         ekran.blit(neutralny, (125, 135))
     else:
         ekran.blit(smutny, (125, 135))
-    """
+
     pygame.display.flip()
     zegar.tick(30)
 
